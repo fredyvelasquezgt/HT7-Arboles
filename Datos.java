@@ -9,24 +9,34 @@
 
 
 public class Datos { //La uso para darle formato a lo que se imprime
-    String D1;
+   
+
+   String D1;
     String D2; //Creo mis variables para darles formato
     String D3;
 
 
 	public String getD(int i) { //recupero los valores de mi D
-        return switch (i) {
+        return switch (i) { //controla el switch
+			
             case (1) -> D1; //caso 1
+			
             case (2) -> D2; //caso 2
+			
             default -> D3; //sino me voy a este
         };
 
     }
 
     public Datos(String[] data){
-        D1 = data[0].toLowerCase(); //minus
-        D2 = data[1].toLowerCase(); //minus
+		
+		D2 = data[1].toLowerCase(); //minus
+		
         D3 = data[2].toLowerCase(); //minus
+		
+        D1 = data[0].toLowerCase(); //minus
+		
+        
     }
 
     

@@ -19,13 +19,26 @@ public class BinaryTree<E> { //Mi va
     protected  E valor; //Nodo
     
    
+   
+    //devuelve el sub arbol 
+    public String toString() {
+        if(isEmpty())return  "BinaryTree: empty";//Formato
+        StringBuilder s = new StringBuilder();
+        s.append("<BinaryTree ").append(getValor());//Formato
+        if (!getLeft().isEmpty()) s.append(" ").append(getLeft());
+        else s.append(" -");
+        if (!getRight().isEmpty()) s.append(" ").append(getRight());
+        else s.append(" -");
+        s.append('>'); //Formato
+        return s.toString();
+    }
 
    
    	//Aca voy manejando el parent nodo
     protected void setParent(BinaryTree<E> newParent)
     {
         if (!isEmpty()) {
-            parent = newParent;
+            parent = newParent; //Verifico vacio
         }
     }
 	
@@ -57,7 +70,23 @@ public class BinaryTree<E> { //Mi va
     }
 
 
-	
+	//Voy iterando aqui
+    public void inorderIterator(BinaryTree nood) {
+
+        if (nood.isEmpty())
+            return;
+
+        /* first recur on left child */
+        inorderIterator(nood.getLeft());
+
+        /* then print the data of node */
+        System.out.print(nood.getValor() + " ");
+
+        /* now recur on right child */
+        inorderIterator(nood.getRight());
+
+
+    }
 
 	//Constructor tocho - aqui si lleva de todo - le meto los gijos
     public BinaryTree(E valor, BinaryTree<E> left, BinaryTree<E> right){
@@ -95,23 +124,7 @@ public class BinaryTree<E> { //Mi va
         return parent;
     }
 	
-	//Voy iterando aqui
-    public void inorderIterator(BinaryTree nood) {
-
-        if (nood.isEmpty())
-            return;
-
-        /* first recur on left child */
-        inorderIterator(nood.getLeft());
-
-        /* then print the data of node */
-        System.out.print(nood.getValor() + " ");
-
-        /* now recur on right child */
-        inorderIterator(nood.getRight());
-
-
-    }
+	
 
     //Metodo del arbol
 	//Verificar si hay algo
@@ -129,12 +142,12 @@ public class BinaryTree<E> { //Mi va
         left.setParent(this);
     }
 
-    
-
-	
-	
-
-	
+  
+	//Association
+	//Devuelvo lo que tengo ahi
+    public void setValor(E valor) {
+        this.valor = valor;
+    }
 	
 	//Voy retornando en donde estoy
     public int size()
@@ -149,6 +162,8 @@ public class BinaryTree<E> { //Mi va
         if (getParent() == null) return this;
         else return getParent().root();
     }
+
+
 
     //Verifico si es nodo izq
     public boolean isLeftChild()
@@ -171,11 +186,7 @@ public class BinaryTree<E> { //Mi va
         return valor;
     }
 
-    //Association
-	//Devuelvo lo que tengo ahi
-    public void setValor(E valor) {
-        this.valor = valor;
-    }
+    
 
     //Manejo de hashcodes
 	
@@ -215,18 +226,7 @@ public class BinaryTree<E> { //Mi va
         return s.toString();
     }
 
-    //devuelve el sub arbol 
-    public String toString() {
-        if(isEmpty())return  "BinaryTree: empty";
-        StringBuilder s = new StringBuilder();
-        s.append("<BinaryTree ").append(getValor());
-        if (!getLeft().isEmpty()) s.append(" ").append(getLeft());
-        else s.append(" -");
-        if (!getRight().isEmpty()) s.append(" ").append(getRight());
-        else s.append(" -");
-        s.append('>');
-        return s.toString();
-    }
+   
 
 
 	

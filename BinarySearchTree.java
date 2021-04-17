@@ -37,6 +37,18 @@ public class BinarySearchTree<E extends Comparable<E>> {
         ordering = alternateOrder;
     }
 
+ public String toString()
+    {
+        StringBuilder s = new StringBuilder();
+        s.append("<BinarySearchTree:");
+        if (!root.isEmpty()) {
+            s.append(root);
+        }
+        s.append(">");
+        return s.toString();
+    }
+
+
     public boolean isEmpty() //Metodo del arbol
     {
         return root == empty;
@@ -51,6 +63,17 @@ public class BinarySearchTree<E extends Comparable<E>> {
     public int size() //Metodo el arbol - dimensiones
     {
         return cont;
+    }
+	
+	
+	
+	 protected BinaryTree<E> predecessor(BinaryTree<E> root)
+    {
+        BinaryTree<E> result = root.getLeft();
+        while (!result.getRight().isEmpty()) {
+            result = result.getRight();
+        }
+        return result;
     }
 
     protected BinaryTree<E> locate(BinaryTree<E> root, E value)
@@ -76,14 +99,23 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
     }
 
-    protected BinaryTree<E> predecessor(BinaryTree<E> root)
-    {
-        BinaryTree<E> result = root.getLeft();
-        while (!result.getRight().isEmpty()) {
-            result = result.getRight();
-        }
-        return result;
+   
+    public int hashCode(){
+        return root.hashCode(); //algunos de los que vienen de la otra clase
     }
+   
+public E get(E value)
+    {
+        if (root.isEmpty()) return null;
+
+        BinaryTree<E> possibleLocation = locate(root,value);
+        if (value.equals(possibleLocation.getValor()))
+            return possibleLocation.getValor();
+        else
+            return null;
+    }
+
+
 
     protected BinaryTree<E> successor(BinaryTree<E> root)
     {
@@ -130,16 +162,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return value.equals(possibleLocation.getValor());
     }
 
-    public E get(E value)
-    {
-        if (root.isEmpty()) return null;
-
-        BinaryTree<E> possibleLocation = locate(root,value);
-        if (value.equals(possibleLocation.getValor()))
-            return possibleLocation.getValor();
-        else
-            return null;
-    }
+    
 
     protected BinaryTree<E> removeTop(BinaryTree<E> topNode)
     {
@@ -214,23 +237,12 @@ public class BinarySearchTree<E extends Comparable<E>> {
         root.inorderIterator(this.root);
     }
 
-    public int hashCode(){
-        return root.hashCode();
-    }
+   
 
     public String treeString(){
         return root.treeString();
     }
 
-    public String toString()
-    {
-        StringBuilder s = new StringBuilder();
-        s.append("<BinarySearchTree:");
-        if (!root.isEmpty()) {
-            s.append(root);
-        }
-        s.append(">");
-        return s.toString();
-    }
+   
 
 }

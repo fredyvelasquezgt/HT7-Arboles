@@ -20,22 +20,8 @@ public class Main {
     
     
 	        Scanner entrada = new Scanner(System.in); //Creo mi scanner
-
-	
-	//Me ayudan a manejar los menus
-    static int opcion1;
-    static int opcion2;
-	
-	//Creo los arboles
-	static BinarySearchTree bstfr = new BinarySearchTree(); //frances
-    static BinarySearchTree bstig = new BinarySearchTree(); //ingles
-	static BinarySearchTree bstes = new BinarySearchTree(); //espanol
-	
-    public static void main(String[] args) {
-
-
-
-        try { //aqui leo mi archivo
+			
+			try { //aqui leo mi archivo
             File myObj = new File("diccionario.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
@@ -58,6 +44,23 @@ public class Main {
             System.out.println("Archivo no encontrado");
             e.printStackTrace();
         }
+			
+
+	
+	//Me ayudan a manejar los menus
+    static int opcion1;
+    static int opcion2;
+	
+	//Creo los arboles
+	static BinarySearchTree bstfr = new BinarySearchTree(); //frances
+    static BinarySearchTree bstig = new BinarySearchTree(); //ingles
+	static BinarySearchTree bstes = new BinarySearchTree(); //espanol
+	
+    public static void main(String[] args) {
+
+
+
+        
 		
 		//Imprimo lo que corresponda - formato
         System.out.println("Print traducciones");
@@ -153,4 +156,4 @@ public class Main {
             }
         }
     }
-}
+} //cierro
