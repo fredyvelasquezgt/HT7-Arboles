@@ -17,9 +17,10 @@ public class Main {
 	
 	
 	
-    
-    
-	        Scanner entrada = new Scanner(System.in); //Creo mi scanner
+    public static void main(String[] args) {
+		
+		
+		Scanner entrada = new Scanner(System.in); //Creo mi scanner
 			
 			try { //aqui leo mi archivo
             File myObj = new File("diccionario.txt");
@@ -55,8 +56,6 @@ public class Main {
 	static BinarySearchTree bstfr = new BinarySearchTree(); //frances
     static BinarySearchTree bstig = new BinarySearchTree(); //ingles
 	static BinarySearchTree bstes = new BinarySearchTree(); //espanol
-	
-    public static void main(String[] args) {
 
 
 
